@@ -6,6 +6,11 @@ req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySele
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
+if(window.location.hash==("#oof"||"#woah"||"#bork"||"#yee"||"#toad")){
+document.body.innerHTML+="<img id='btn' src='"+window.location.hash.slice(1)+".png' style='cursor:pointer;width:10em;height:10em;'/>";
+document.getElementById('btn').ontouchend=function(){window.playSound()};
+document.getElementById('btn').onmouseup=function(){(!('ontouchend' in window))&&(window.playSound())};
+}
 var audioCtx;
 var source;
 function getData(){try{
