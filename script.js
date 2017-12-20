@@ -24,3 +24,4 @@ source.playbackRate.value=document.querySelector('.playback-rate-control').value
 }
 document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.playSound();}
 }
+window.onhashchange=function(){window.location.reload();}
