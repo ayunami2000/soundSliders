@@ -28,7 +28,7 @@ var audioCtx=new (window.AudioContext||window.webkitAudioContext)();
 var source;
 function getData(){try{
 source=audioCtx.createBufferSource();
-audioCtx.decodeAudioData(window.oof.slice(0),function(buffer){
+audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
 source.playbackRate.value=document.querySelector('.playback-rate-control').value;
 source.connect(audioCtx.destination);
