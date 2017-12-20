@@ -18,11 +18,11 @@ if(!window.audioCtx){window.audioCtx=new (window.AudioContext||window.webkitAudi
 source=window.audioCtx.createBufferSource();
 window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
-source.playbackRate.value=document.querySelector('.playback-rate-control').value;
+source.playbackRate.value=document.querySelector('.playback-rate-control').value/10;
 source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
 }catch(exc){alert(exc);}}
-document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value/10;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 }
 window.onhashchange=function(){window.location.reload();}
