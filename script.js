@@ -7,7 +7,6 @@ req.send();
 }catch(e){alert(e);}
 window.onload=function(){
 if(window.location.hash=="#oof"||window.location.hash=="#woah"||window.location.hash=="#bork"||window.location.hash=="#yee"||window.location.hash=="#toad"){
-window.sound=window.sounds[window.location.hash.slice(1)];
 document.body.innerHTML+="<img id='btn' src='"+window.location.hash.slice(1)+".png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchend=function(){window.playSound()};
 document.getElementById('btn').onmouseup=function(){(!('ontouchend' in window))&&(window.playSound())};
