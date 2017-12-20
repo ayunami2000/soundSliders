@@ -11,7 +11,6 @@ document.body.innerHTML+="<img id='btn' src='"+window.location.hash.slice(1)+".p
 document.getElementById('btn').ontouchend=function(){window.playSound()};
 document.getElementById('btn').onmouseup=function(){(!('ontouchend' in window))&&(window.playSound())};
 }else{document.body.innerHTML="Error: Invalid sound. <a href='index.html'>Click here to see the sound directory...</a>";}
-var audioCtx;
 var source;
 function getData(){try{
 if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();}
@@ -30,3 +29,4 @@ source.playbackRate.value=document.querySelector('.playback-rate-control').value
 document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.playSound();}
 }
 window.onhashchange=function(){window.location.reload();}
+window.onclick=function(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();this.onclick=function(e){};}
