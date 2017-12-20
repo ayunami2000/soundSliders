@@ -20,14 +20,15 @@ window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
 source.playbackRate.value=document.querySelector('.playback-rate-control').value;
 source.connect(window.audioCtx.destination);
-},function(e){console.log(e);});
-}catch(e){alert(e);}}
+source.start(0);
+},function(e){alert(e);});
+}catch(exc){alert(exc);}}
 window.playSound=function(){
 getData();
-source.start(0);
-source.playbackRate.value=document.querySelector('.playback-rate-control').value;
+//source.start(0);
+//source.playbackRate.value=document.querySelector('.playback-rate-control').value;
 }
 document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.playSound();}
 }
 window.onhashchange=function(){window.location.reload();}
-window.onclick=function(){if(!window.audioCtx){window.audioCtx=new (window.AudioContext||window.webkitAudioContext)();}this.onclick=function(e){};}
+//window.onclick=function(){if(!window.audioCtx){window.audioCtx=new (window.AudioContext||window.webkitAudioContext)();}this.onclick=function(e){};}
