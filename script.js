@@ -10,7 +10,7 @@ if(window.location.hash=="#oof"||window.location.hash=="#woah"||window.location.
 document.body.innerHTML+="<img id='btn' src='"+window.location.hash.slice(1)+".png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchend=function(){window.playSound()};
 document.getElementById('btn').onmouseup=function(){(!('ontouchend' in window))&&(window.playSound())};
-}else{document.body.innerHTML="Error: Invalid sound. <a href='/'>Click here to see the sound directory...</a>";}
+}else{document.body.innerHTML="Error: Invalid sound. <a href='index.html'>Click here to see the sound directory...</a>";}
 var audioCtx;
 var source;
 function getData(){try{
