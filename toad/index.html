@@ -1,0 +1,45 @@
+<!DOCTYPE html5>
+<html>
+<head>
+<title>TOAD Slider</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="img.png" />
+</head>
+<script src="sound.js"></script>
+<script>
+try{
+req=new XMLHttpRequest();
+req.open('GET',window.soundURL,true);
+req.responseType='arraybuffer';
+req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
+req.send();
+}catch(e){alert(e);}
+</script>
+<body>
+<h1>Toad</h1>
+<input class="playback-rate-control" type="range" min="0.25" max="3" step="0.05" value="1">
+Speed and Pitch: <span class="playback-rate-value">1.0</span>
+<br>
+<input type="checkbox" checked>Play when slider is moved?
+<br>
+<img src="img.png" style="cursor:pointer;width:10em;height:10em;" ontouchend="window.playSound()" onmouseup="(!('ontouchend' in window))&&(window.playSound())">
+<script>
+var audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+var source;
+function getData(){try{
+source=audioCtx.createBufferSource();
+audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
+source.buffer=buffer;
+source.playbackRate.value=document.querySelector('.playback-rate-control').value;
+source.connect(audioCtx.destination);
+},function(e){console.log(e);});
+}catch(e){alert(e);}}
+window.playSound=function(){
+getData();
+source.start(0);
+source.playbackRate.value=document.querySelector('.playback-rate-control').value;
+}
+document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.playSound();}
+</script>
+</body>
+</html>
