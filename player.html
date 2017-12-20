@@ -1,0 +1,19 @@
+<!DOCTYPE html5>
+<html>
+<head>
+<title>soundSliders</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="img.png" />
+</head>
+<script src="sounds.js"></script>
+<script src="../script.js"></script>
+<body>
+<h1>soundSliders</h1>
+<input class="playback-rate-control" type="range" min="0.25" max="3" step="0.05" value="1">
+Speed and Pitch: <span class="playback-rate-value">1.0</span>
+<br>
+<input type="checkbox" checked>Play when slider is moved?
+<br>
+<img src="img.png" style="cursor:pointer;width:10em;height:10em;" ontouchend="window.playSound()" onmouseup="(!('ontouchend' in window))&&(window.playSound())">
+</body>
+</html>
