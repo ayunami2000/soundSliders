@@ -29,4 +29,4 @@ source.playbackRate.value=document.querySelector('.playback-rate-control').value
 document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.playSound();}
 }
 window.onhashchange=function(){window.location.reload();}
-window.onclick=function(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();this.onclick=function(e){};}
+window.onclick=function(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();}this.onclick=function(e){};}
