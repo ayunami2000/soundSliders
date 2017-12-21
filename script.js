@@ -6,6 +6,7 @@ req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySele
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
+//document.getElementById('percent').style="margin-left:-1em;z-index:-1;";
 document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchstart=function(){window.getData()};
 document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
