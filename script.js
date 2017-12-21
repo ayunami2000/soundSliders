@@ -8,8 +8,8 @@ req.send();
 window.onload=function(){
 if(window.location.hash=="#oof"||window.location.hash=="#woah"||window.location.hash=="#bork"||window.location.hash=="#yee"||window.location.hash=="#toad"){
 document.body.innerHTML+="<img id='btn' src='"+window.location.hash.slice(1)+".png' style='cursor:pointer;width:10em;height:10em;'/>";
-document.getElementById('btn').ontouchstart=function(){window.playSound()};
-document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.playSound())};
+document.getElementById('btn').ontouchstart=function(){window.getData()};
+document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
 }else{document.body.innerHTML="Error: Invalid sound. <a href='index.html'>Click here to see the sound directory...</a>";}
 window.audioCtx=0;
 var source;
