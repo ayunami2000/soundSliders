@@ -1,13 +1,13 @@
 try{
 req=new XMLHttpRequest();
-req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/"+window.location.hash.slice(1).replace(/\W/g,'')+".mp3",true);
+req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.mp3",true);
 req.responseType='arraybuffer';
 req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
 if(window.location.hash=="#oof"||window.location.hash=="#woah"||window.location.hash=="#bork"||window.location.hash=="#yee"||window.location.hash=="#toad"){
-document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/"+window.location.hash.slice(1).replace(/\W/g,'')+".png' style='cursor:pointer;width:10em;height:10em;'/>";
+document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchstart=function(){window.getData()};
 document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
 }else{document.body.innerHTML="Error: Invalid sound. <a href='index.html'>Click here to see the sound directory...</a>";}
