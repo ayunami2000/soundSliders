@@ -22,7 +22,9 @@ source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
 }catch(exc){alert(exc);}}
-document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
-document.querySelector('.playback-rate-control').onchange=function(){document.querySelector('.playback-rate-value').innerHTML=document.querySelector('.playback-rate-control').value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').value=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-control').onchange=function(){document.querySelector('.playback-rate-value').value=document.querySelector('.playback-rate-control').value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-value').oninput=function(){document.querySelector('.playback-rate-control').value=document.querySelector('.playback-rate-value').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-value').onchange=function(){document.querySelector('.playback-rate-control').value=document.querySelector('.playback-rate-value').value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 }
 window.onhashchange=function(){window.location.reload();}
