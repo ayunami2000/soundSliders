@@ -9,7 +9,7 @@ window.onload=function(){
 document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchstart=function(){window.getData()};
 document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
-document.getElementById('btn').onerror=function(){document.body.innerHTML="Error: Invalid sound. <a href='index.html'>Click here to see the sound directory...</a>";}
+document.getElementById('btn').onerror=function(){document.body.innerHTML="Error: Invalid sound.<br><a href='index.html'>Click to go to the directory...</a>";}
 window.audioCtx=0;
 var source;
 window.getData=function(){try{
