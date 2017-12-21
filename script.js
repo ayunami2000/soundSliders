@@ -1,5 +1,5 @@
 try{
-if(window.location.hash==''){document.documentElement.innerHTML='<head>\n<title>soundSliders</title>\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<link rel="icon" type="image/png" href="icon.png" />\n</head>\n<body>\n<h1>soundSliders</h1>\n<h3>Choose a Slider:</h3>\n<ul>\n<li><a href="player.html#custom">Custom audio</a></li>\n<li><a href="player.html#oof">Oof</a></li>\n<li><a href="player.html#woah">Woah</a></li>\n<li><a href="player.html#yee">Yee</a></li>\n<li><a href="player.html#bork">Bork</a></li>\n<li><a href="player.html#toad">Toad</a></li>\n</ul>\n</body>';}
+if(window.location.hash==''){document.querySelector('html').innerHTML='<head>\n<title>soundSliders</title>\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<link rel="icon" type="image/png" href="icon.png" />\n</head>\n<body>\n<h1>soundSliders</h1>\n<h3>Choose a Slider:</h3>\n<ul>\n<li><a href="player.html#custom">Custom audio</a></li>\n<li><a href="player.html#oof">Oof</a></li>\n<li><a href="player.html#woah">Woah</a></li>\n<li><a href="player.html#yee">Yee</a></li>\n<li><a href="player.html#bork">Bork</a></li>\n<li><a href="player.html#toad">Toad</a></li>\n</ul>\n</body>';}
 req=new XMLHttpRequest();
 req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.mp3",true);
 req.responseType='arraybuffer';
