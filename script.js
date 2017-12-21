@@ -1,5 +1,4 @@
 try{
-if(window.location.hash==''){document.querySelector('html').innerHTML='<head><title>soundSliders</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="icon.png" /></head><body><h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="player.html#custom">Custom audio</a></li><li><a href="player.html#oof">Oof</a></li><li><a href="player.html#woah">Woah</a></li><li><a href="player.html#yee">Yee</a></li><li><a href="player.html#bork">Bork</a></li><li><a href="player.html#toad">Toad</a></li></ul></body>';}
 req=new XMLHttpRequest();
 req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.mp3",true);
 req.responseType='arraybuffer';
@@ -7,6 +6,9 @@ req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySele
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
+if(window.location.hash==''){
+document.querySelector('html').innerHTML='<head><title>soundSliders</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="icon.png" /></head><body><h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="player.html#custom">Custom audio</a></li><li><a href="player.html#oof">Oof</a></li><li><a href="player.html#woah">Woah</a></li><li><a href="player.html#yee">Yee</a></li><li><a href="player.html#bork">Bork</a></li><li><a href="player.html#toad">Toad</a></li></ul></body>';
+}else{
 if(window.location.hash.slice(1)=='custom'){document.querySelector('span').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/\W/g,'');}
 document.body.innerHTML+="<img src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.querySelector('img').ontouchstart=function(){window.getData()};
@@ -37,5 +39,6 @@ source.start(0);
 document.querySelector('input[type=range]').oninput=function(){document.querySelector('input[type=number]').value=this.value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=range]').onchange=function(){document.querySelector('input[type=number]').value=this.value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=number]').onchange=function(){document.querySelector('input[type=range]').value=this.value;window.getData();}
+}//end show directory else
 }
 window.onhashchange=function(){window.location.reload();}
