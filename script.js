@@ -13,19 +13,7 @@ function isChrome(){
     isOpera = winNav.userAgent.indexOf("OPR") > -1,
     isIEedge = winNav.userAgent.indexOf("Edge") > -1,
     isIOSChrome = winNav.userAgent.match("CriOS");
-  if (isIOSChrome) {
-    return true;
-  } else if (
-    isChromium !== null &&
-    typeof isChromium !== "undefined" &&
-    vendorName === "Google Inc." &&
-    isOpera === false &&
-    isIEedge === false
-  ) {
-    return true;
-  } else { 
-    return false;
-  }
+  if(isIOSChrome){return false;}else if(isChromium!==null&&typeof isChromium!=="undefined"&&vendorName==="Google Inc."&&isOpera===false&&isIEedge===false){return true;}else{return false;}
 }
 if(isChrome()){document.getElementById('percent').style="margin-left:-1em;z-index:-1;";}
 document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
