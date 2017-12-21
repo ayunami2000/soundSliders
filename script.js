@@ -6,6 +6,7 @@ req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySele
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
+if(window.location.hash.slice(1)=='custom'){document.querySelector('h1').innerHTML="soundSliders - Custom Audio";}else{document.querySelector('h1').innerHTML=window.location.hash.slice(1).replace(/\W/g,'');}
 document.body.innerHTML+="<img src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.querySelector('img').ontouchstart=function(){window.getData()};
 document.querySelector('img').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
