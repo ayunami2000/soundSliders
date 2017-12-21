@@ -18,7 +18,7 @@ if(!window.audioCtx){window.audioCtx=new (window.AudioContext||window.webkitAudi
 source=window.audioCtx.createBufferSource();
 window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
-source.playbackRate.value=document.querySelector('.playback-rate-control').value;
+source.playbackRate.value=document.querySelector('.playback-rate-control').value/50;
 source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
