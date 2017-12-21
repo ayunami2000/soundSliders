@@ -24,7 +24,6 @@ source.start(0);
 }catch(exc){alert(exc);}}
 document.querySelector('.playback-rate-control').oninput=function(){document.querySelector('.playback-rate-value').value=document.querySelector('.playback-rate-control').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('.playback-rate-control').onchange=function(){document.querySelector('.playback-rate-value').value=document.querySelector('.playback-rate-control').value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
-document.querySelector('.playback-rate-value').oninput=function(){document.querySelector('.playback-rate-control').value=document.querySelector('.playback-rate-value').value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
-document.querySelector('.playback-rate-value').onchange=function(){document.querySelector('.playback-rate-control').value=document.querySelector('.playback-rate-value').value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
+document.querySelector('.playback-rate-value').onchange=function(){document.querySelector('.playback-rate-control').value=document.querySelector('.playback-rate-value').value;window.getData();}
 }
 window.onhashchange=function(){window.location.reload();}
