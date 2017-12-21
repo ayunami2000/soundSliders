@@ -7,7 +7,7 @@ req.send();
 }catch(e){alert(e);}
 window.onload=function(){
 if(window.location.hash==''){
-document.querySelector('html').innerHTML='<head><title>soundSliders</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="icon.png" /></head><body><h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="player.html#custom">Custom audio</a></li><li><a href="player.html#oof">Oof</a></li><li><a href="player.html#woah">Woah</a></li><li><a href="player.html#yee">Yee</a></li><li><a href="player.html#bork">Bork</a></li><li><a href="player.html#toad">Toad</a></li></ul></body>';
+document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="#custom">Custom audio</a></li><li><a href="#oof">Oof</a></li><li><a href="#woah">Woah</a></li><li><a href="#yee">Yee</a></li><li><a href="#bork">Bork</a></li><li><a href="#toad">Toad</a></li></ul>';
 }else{
 if(window.location.hash.slice(1)=='custom'){document.querySelector('span').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/\W/g,'');}
 document.body.innerHTML+="<img src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
