@@ -18,7 +18,7 @@ req=new XMLHttpRequest();
 window.objURL=window.URL.createObjectURL(this.files[0]);
 req.open('GET',window.objURL,true);
 req.responseType='arraybuffer';
-req.onload=function(){window.URL.revokeObjectURL(window.objURL);document.querySelector('btn').style.display="initial";document.querySelector('img').src="icon.png";window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
+req.onload=function(){window.URL.revokeObjectURL(window.objURL);document.querySelector('button').style.display="initial";document.querySelector('img').src="icon.png";window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
 req.send();
 }
 var source;
