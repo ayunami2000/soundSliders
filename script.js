@@ -6,16 +6,11 @@ req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySele
 req.send();
 }catch(e){alert(e);}
 window.onload=function(){
-function isChrome(){
-  var isChromium = window.chrome,
-    winNav = window.navigator,
-    vendorName = winNav.vendor,
-    isOpera = winNav.userAgent.indexOf("OPR") > -1,
-    isIEedge = winNav.userAgent.indexOf("Edge") > -1,
-    isIOSChrome = winNav.userAgent.match("CriOS");
-  if(isIOSChrome){return false;}else if(isChromium!==null&&typeof isChromium!=="undefined"&&vendorName==="Google Inc."&&isOpera===false&&isIEedge===false){return true;}else{return false;}
+function isChrome(noIOS){
+var isChromium=window.chrome,winNav=window.navigator,vendorName=winNav.vendor,isOpera=winNav.userAgent.indexOf("OPR")>-1,isIEedge=winNav.userAgent.indexOf("Edge")>-1,isIOSChrome=!noIOS&&winNav.userAgent.match("CriOS");
+if(isIOSChrome){return true;}else if(isChromium!==null&&typeof isChromium!=="undefined"&&vendorName==="Google Inc."&&isOpera===false&&isIEedge===false){return true;}else{return false;}
 }
-if(isChrome()){document.getElementById('percent').style="margin-left:-1em;z-index:-1;";}
+if(isChrome(true)){document.getElementById('percent').style="margin-left:-1em;z-index:-1;";}
 document.body.innerHTML+="<img id='btn' src='sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.png' style='cursor:pointer;width:10em;height:10em;'/>";
 document.getElementById('btn').ontouchstart=function(){window.getData()};
 document.getElementById('btn').onmousedown=function(){(!('ontouchstart' in window))&&(window.getData())};
