@@ -53,7 +53,11 @@ return;
 }
 window.getData();
 }
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(!('ontouchstart' in window)){
+document.querySelectorAll('input[name=preset]')[i].parentElement.clicking=0;
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(this.clicking){this.onmousedown();}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){this.clicking=0;}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){if(!('ontouchstart' in window)){
+this.clicking=1;
 this.children[0].click();
 if(window.choosingPreset){
 this.children[2].value=this.value=document.querySelector('input[type=range]').value;
@@ -64,7 +68,8 @@ return;
 }
 window.getData();
 }}
-document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.ondragstart=function(){return false;}
+window.ondragstart=function(){return false;}
+//document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.ondragstart=function(){return false;}
 }
 document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
