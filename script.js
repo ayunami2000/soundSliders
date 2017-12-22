@@ -36,17 +36,26 @@ source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
 }catch(exc){alert(exc);}}
+window.choosingPreset=0;
 document.querySelector('input[type=range]').oninput=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=number]').value=this.value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=range]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=number]').value=this.value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=number]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=range]').value=this.value;window.getData();}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){
 document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(this.checked){document.querySelector('input[type=range]').value=document.querySelector('input[type=number]').value=this.value;}}
-document.querySelectorAll('input[name=preset]')[i].onclick=function(){window.getData();}
-document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){this.previousElementSibling.previousElementSibling.click();}
+document.querySelectorAll('input[name=preset]')[i].onclick=function(){!window.choosingPreset&&window.getData();}
+document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.click();}
 }
 document.querySelectorAll('button')[1].onclick=function(){
-//insert disable and enable and preventdefault if in choose mode onclick
-document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].nextElementSibling.nextElementSibling.value=document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].value=document.querySelector('input[type=range]').value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}}
+if(window.choosingPreset){
+for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
+window.choosingPreset=0;
+return;
+}
+window.choosingPreset=1;
+for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].disabled=true;}
+document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].nextElementSibling.nextElementSibling.value=document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].value=document.querySelector('input[type=range]').value;
+for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}
+}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[type=number]')[i].oninput=function(){this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
 }//end show directory else
 }
