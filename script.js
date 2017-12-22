@@ -41,7 +41,7 @@ document.querySelector('input[type=range]').oninput=function(){for(var i=0;i<doc
 document.querySelector('input[type=range]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=number]').value=this.value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=number]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=range]').value=this.value;window.getData();}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){
-document.querySelectorAll('input[name=preset]')[i].onchange=function(){window.choosingPreset&&return;if(this.checked){document.querySelector('input[type=range]').value=document.querySelector('input[type=number]').value=this.value;}}
+document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(window.choosingPreset){return;}if(this.checked){document.querySelector('input[type=range]').value=document.querySelector('input[type=number]').value=this.value;}}
 document.querySelectorAll('input[name=preset]')[i].onclick=function(){
 if(window.choosingPreset){
 this.nextElementSibling.nextElementSibling.value=this.value=document.querySelector('input[type=range]').value;
@@ -65,7 +65,7 @@ for(var i=0;i<document.querySelectorAll('input:not(input[name=parent]):not(input
 //document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].nextElementSibling.nextElementSibling.value=document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].value=document.querySelector('input[type=range]').value;
 //for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}
 }
-for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){window.choosingPreset&&return;this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
+for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
 }//end show directory else
 }
 window.onhashchange=function(){window.location.reload();}
