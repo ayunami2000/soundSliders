@@ -54,10 +54,11 @@ return;
 window.getData();
 }
 window.clickingPreset=0;
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(window.clicking){this.onmousedown();}}
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){window.clicking=0;}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(window.clickingPreset){this.onmousedown();}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){window.clickingPreset=0;}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseleave=function(){window.clickingPreset=0;}
 document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){if(!('ontouchstart' in window)){
-window.clicking=1;
+window.clickingPreset=1;
 this.children[0].click();
 if(window.choosingPreset){
 this.children[2].value=this.value=document.querySelector('input[type=range]').value;
