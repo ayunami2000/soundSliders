@@ -41,12 +41,9 @@ document.querySelector('input[type=range]').oninput=function(){for(var i=0;i<doc
 document.querySelector('input[type=range]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=number]').value=this.value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=number]').onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].value==this.value;}document.querySelector('input[type=range]').value=this.value;window.getData();}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){
-//document.querySelectorAll('input[name=preset]')[i].parentElement.ontouchstart=function(){!window.choosingPreset&&this.children[0].click()}
-//document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){(!('ontouchstart' in window))&&(!window.choosingPreset&&this.children[0].click())}
 document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(window.choosingPreset){return;}if(this.checked){document.querySelector('input[type=range]').value=document.querySelector('input[type=number]').value=this.value;}}
 document.querySelectorAll('input[name=preset]')[i].parentElement.ontouchstart=function(){
 this.children[0].click();
-//document.querySelectorAll('input[name=preset]')[i].onclick=function(){
 if(window.choosingPreset){
 this.children[2].value=this.value=document.querySelector('input[type=range]').value;
 for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
@@ -67,8 +64,7 @@ return;
 }
 window.getData();
 }}
-document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onselectstart=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.ondragstart=function(){return false;};
-//document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){this.previousElementSibling.previousElementSibling.click();}
+document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.ondragstart=function(){return false;}
 }
 document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
