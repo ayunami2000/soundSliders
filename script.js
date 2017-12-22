@@ -44,7 +44,9 @@ document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(this.c
 document.querySelectorAll('input[name=preset]')[i].onclick=function(){window.getData();}
 document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){this.previousElementSibling.previousElementSibling.click();}
 }
-document.querySelectorAll('button')[1].onclick=function(){document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].nextElementSibling.nextElementSibling.value=document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].value=document.querySelector('input[type=range]').value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}}
+document.querySelectorAll('button')[1].onclick=function(){
+//insert disable and enable and preventdefault if in choose mode onclick
+document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].nextElementSibling.nextElementSibling.value=document.querySelectorAll('input[name=preset]')[this.nextElementSibling.value-1].value=document.querySelector('input[type=range]').value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[type=number]')[i].oninput=function(){this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
 }//end show directory else
 }
