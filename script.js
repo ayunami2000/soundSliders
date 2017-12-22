@@ -53,7 +53,7 @@ return;
 }
 window.getData();
 }
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){if(!('ontouchstart' in window)){
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(!('ontouchstart' in window)){
 this.children[0].click();
 if(window.choosingPreset){
 this.children[2].value=this.value=document.querySelector('input[type=range]').value;
