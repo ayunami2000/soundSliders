@@ -53,7 +53,6 @@ document.querySelectorAll('button')[1].innerHTML="Save to Preset...";
 window.choosingPreset=0;
 return;
 }
-window.getData();
 }
 document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onselectstart=function(){return false;};
 document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){this.previousElementSibling.previousElementSibling.click();}
