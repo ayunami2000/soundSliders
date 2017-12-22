@@ -57,11 +57,13 @@ document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElemen
 document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].removeAttribute('disabled');}
+this.innerHTML="Save to Preset...";
 window.choosingPreset=0;
 return;
 }
 window.choosingPreset=1;
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].disabled=true;}
+this.innerHTML="Cancel...";
 }
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
 }//end show directory else
