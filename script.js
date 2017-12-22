@@ -55,7 +55,7 @@ window.getData();
 }
 window.clickingPreset=0;
 document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(window.clickingPreset){this.onmousedown();}}
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){window.clickingPreset=0;}}
+window.onmouseup=function(){if(!('ontouchend' in window)){window.clickingPreset=0;}}
 document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseleave=function(){window.clickingPreset=0;}
 document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){if(!('ontouchstart' in window)){
 window.clickingPreset=1;
