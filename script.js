@@ -85,7 +85,7 @@ for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){!docum
 this.innerHTML="Cancel...";
 }
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
-document.querySelectorAll('input[type=checkbox]')[1].onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]').nextElementSibling.nextElementSibling.disabled=this.checked;}}
+document.querySelectorAll('input[type=checkbox]')[1].onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.disabled=this.checked;}}
 }//end show directory else
 }
 window.onhashchange=function(){window.location.reload();}
