@@ -53,11 +53,11 @@ return;
 }
 window.getData();
 }
-document.querySelectorAll('input[name=preset]')[i].parentElement.clicking=0;
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(this.clicking){this.onmousedown();}}
-document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){this.clicking=0;}}
+window.clickingPreset=0;
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseenter=function(){if(window.clicking){this.onmousedown();}}
+document.querySelectorAll('input[name=preset]')[i].parentElement.onmouseup=function(){if(!('ontouchend' in window)){window.clicking=0;}}
 document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=function(){if(!('ontouchstart' in window)){
-this.clicking=1;
+window.clicking=1;
 this.children[0].click();
 if(window.choosingPreset){
 this.children[2].value=this.value=document.querySelector('input[type=range]').value;
