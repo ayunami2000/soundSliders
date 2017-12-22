@@ -74,12 +74,14 @@ window.ondragstart=function(){return false;}
 document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].removeAttribute('disabled');}
+for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.removeAttribute('readonly');}
 this.innerHTML="Save to Preset...";
 window.choosingPreset=0;
 return;
 }
 window.choosingPreset=1;
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].disabled=true;}
+for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.removeAttribute('disabled');document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.readonly=true;}
 this.innerHTML="Cancel...";
 }
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
