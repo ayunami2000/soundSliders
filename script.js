@@ -39,8 +39,8 @@ source.start(0);
 document.querySelector('input[type=range]').oninput=function(){document.querySelector('input[type=number]').value=this.value;(document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=range]').onchange=function(){document.querySelector('input[type=number]').value=this.value;(!document.querySelector('input[type=checkbox]').checked)&&window.getData();}
 document.querySelector('input[type=number]').onchange=function(){document.querySelector('input[type=range]').value=this.value;window.getData();}
-for(var i=0;i<document.querySelectorAll('input[type=radio]').length;i++){document.querySelectorAll('input[type=radio]')[i].onchange=function(){if(this.checked){document.querySelector('input[type=range]').value=this.value;window.getData();}}}
-//document.querySelectorAll('button')[1].onclick=function(){for(var i=0;i<document.querySelectorAll('input[type=radio]').length;i++){}}
+for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(this.checked){document.querySelector('input[type=range]').value=this.value;window.getData();}}}
+document.querySelectorAll('button')[1].onclick=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){if(document.querySelectorAll('input[name=preset]')[i].checked){document.querySelectorAll('input[name=preset]')[i].value=document.querySelector('input[type=range]').value;}}}
 }//end show directory else
 }
 window.onhashchange=function(){window.location.reload();}
