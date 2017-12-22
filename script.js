@@ -43,13 +43,15 @@ document.querySelector('input[type=number]').onchange=function(){for(var i=0;i<d
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){
 document.querySelectorAll('input[name=preset]')[i].onchange=function(){if(this.checked){document.querySelector('input[type=range]').value=document.querySelector('input[type=number]').value=this.value;}}
 document.querySelectorAll('input[name=preset]')[i].onclick=function(){
-if(window.choosingPreset){
+if(window.choosingPreset){try{
 this.nextElementSibling.nextElementSibling.value=this.value=document.querySelector('input[type=range]').value;
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=i==this.nextElementSibling.value-1;}
+for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
+window.choosingPreset=0;
 return;
 }
 window.getData();
-}
+}catch(e){alert(e);}}
 document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.onclick=function(){this.previousElementSibling.previousElementSibling.click();}
 }
 document.querySelectorAll('button')[1].onclick=function(){
