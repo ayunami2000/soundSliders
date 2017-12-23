@@ -11,22 +11,24 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 input[type=radio]:not(:checked){height:1.5em;}
 input[type=radio]:checked{height:1em;}
 input[type=radio]{visibility:hidden;width:calc(calc(100% / 6) - 1em);}
+@media screen and (orientation:portrait){input[type=range]{width:100%;}button:nth-child(2){width:100%;}img{width:100%;height:100vw;}span:not(:first-child){width:50% !important;}input[type=number]:first-child{width:calc(100% - 18em;);}}
+@media screen and (orientation:landscape){}
 </style>
 </head>
 <script src="script.js"></script>
 <body>
 <a href="#">Sound Directory</a>
 <h1>soundSliders</h1>
-<span  style="display:none;">
+<span style="display:none;">
 <button onclick="window.location.reload();" style="display:none;">Restore...</button>
 <input type="file"/>
 <br>
 </span>
-<input type="range" style="width:15em;" min="10" max="200" step="1" value="100" disabled/>
+<input type="range" min="10" max="200" step="1" value="100" disabled/>
 <br>
-Speed and Pitch: <input type="number" style="width:3.75em;" min="10" max="200" step="1" value="100" placeholder="100" disabled/>%
+Speed and Pitch: <input type="number" min="10" max="200" step="1" value="100" placeholder="100" disabled/>%
 <br>
-<button style="width:15em;">Save to Preset...</button>
+<button>Save to Preset...</button>
 <br>
 <h3>Presets:</h3>
 <span style="background-color:white;color:black;border:0;text-align:center;display:inline-block;width:calc(100% / 7);padding:0;margin:0;"><input type="radio" name="preset" value="50" disabled/><br><input type="number" style="background-color:white;color:black;" min="10" max="200" step="1" value="50" placeholder="50" disabled/>%<br>[A]</span>
