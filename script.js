@@ -9,7 +9,7 @@ window.onload=function(){
 if(window.location.hash==''){
 document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="#custom">Custom audio</a></li><li><a href="#oof">Oof</a></li><li><a href="#woah">Woah</a></li><li><a href="#yee">Yee</a></li><li><a href="#bork">Bork</a></li><li><a href="#toad">Toad</a></li></ul>';
 }else{
-if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){document.body.innerHTML+="<div style='position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;' onclick='window.getData();'> </div>";}
+if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){document.body.innerHTML+='<div style="position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;" onclick="window.getData();this.outerHTML=\'\';"> </div>';}
 
 window.choosingPreset=0;
 if(window.location.hash.slice(1)=='custom'){document.querySelector('span').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/\W/g,'');}
