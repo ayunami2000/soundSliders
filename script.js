@@ -61,7 +61,7 @@ document.querySelectorAll('input[name=preset]')[i].parentElement.onmousedown=fun
 window.clickingPreset=1;
 this.children[0].click();
 if(window.choosingPreset){
-this.children[2].value=this.value=document.querySelector('input[type=range]').value;
+this.children[2].value=this.children[0].value=document.querySelector('input[type=range]').value;
 for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
 document.querySelectorAll('button')[1].innerHTML="Save to Preset...";
 window.choosingPreset=0;
