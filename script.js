@@ -2,7 +2,7 @@ try{
 req=new XMLHttpRequest();
 req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.mp3",true);
 req.responseType='arraybuffer';
-req.onload=function(){window.sound=req.response;if(!(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream)){for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}}
+req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
 req.send();
 if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){alert("Because you are using iOS, you must first tap the image button to enable the audio.");}
 }catch(e){alert(e);}
@@ -34,7 +34,6 @@ source=window.audioCtx.createBufferSource();
 window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
 source.playbackRate.value=document.querySelector('input[type=range]').value/100;
-for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
 source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
