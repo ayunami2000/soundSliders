@@ -86,6 +86,7 @@ this.innerHTML="Cancel...";
 }
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.oninput=function(){if(window.choosingPreset){return;}this.previousElementSibling.previousElementSibling.value=this.value;for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].checked=document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.value==document.querySelector('input[type=range]').value;}}}
 document.querySelectorAll('input[type=checkbox]')[1].onchange=function(){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.disabled=this.checked;}}
+window.onkeypress=function(e){if(e.keyCode==65){document.querySelectorAll('input[name=preset]')[0].parentElement.click();}if(e.keyCode==83){document.querySelectorAll('input[name=preset]')[1].parentElement.click();}if(e.keyCode==68){document.querySelectorAll('input[name=preset]')[2].parentElement.click();}if(e.keyCode==74){document.querySelectorAll('input[name=preset]')[3].parentElement.click();}if(e.keyCode==75){document.querySelectorAll('input[name=preset]')[4].parentElement.click();}if(e.keyCode==76){document.querySelectorAll('input[name=preset]')[5].parentElement.click();}}
 }//end show directory else
 }
 window.onhashchange=function(){window.location.reload();}
