@@ -14,13 +14,7 @@ input[type=radio]{visibility:hidden;width:calc(calc(100% / 6) - 1em);}
 span:not(:first-child){cursor:pointer;background-color:white;color:black;border:1px solid black;text-align:center;display:inline-block;width:calc(100% / 7);padding:0;margin:0;}
 img{cursor:pointer;width:25vw;height:25vw;}
 input[type=range]{width:50vw;}
-@media screen and (orientation:portrait){
-  input[type=range]{width:75vw;}
-  img{width:75vw;height:75vw;}
-  span:not(:first-child){width:45vw;}
-  /*input[type=number]:first-child{float:right;}*/
-  span:not(:first-child){float:center;}
-}
+@media screen and (orientation:portrait){input[type=range]{width:75vw;}img{width:75vw;height:75vw;}span:not(:first-child){width:45vw;float:center;}}
 @media screen and (orientation:landscape){}
 </style>
 </head>
