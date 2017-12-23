@@ -2,8 +2,9 @@ try{
 req=new XMLHttpRequest();
 req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/\W/g,'')+"/the.mp3",true);
 req.responseType='arraybuffer';
-req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
+req.onload=function(){window.sound=req.response;if(!(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream)){for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}}
 req.send();
+if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){alert("Because you are using iOS, you must first tap the image button to enable the audio.");}
 }catch(e){alert(e);}
 window.onload=function(){
 if(window.location.hash==''){
@@ -18,7 +19,7 @@ document.querySelector('img').onerror=function(){document.body.innerHTML="Error:
 window.audioCtx;
 window.objURL;
 document.querySelector('input[type=file]').onchange=function(){
-for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].disabled=true;}
+for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].disabled=1;}
 req=new XMLHttpRequest();
 window.objURL=window.URL.createObjectURL(this.files[0]);
 req.open('GET',window.objURL,true);
@@ -33,6 +34,7 @@ source=window.audioCtx.createBufferSource();
 window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
 source.playbackRate.value=document.querySelector('input[type=range]').value/100;
+for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}
 source.connect(window.audioCtx.destination);
 source.start(0);
 },function(e){alert(e);});
@@ -75,6 +77,7 @@ document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].removeAttribute('disabled');}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.removeAttribute('readonly');}
+if(document.querySelectorAll(input[type=checkbox])[1].checked){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.disabled=1;}}
 this.innerHTML="Save to Preset...";
 window.choosingPreset=0;
 return;
