@@ -24,7 +24,7 @@ req=new XMLHttpRequest();
 window.objURL=window.URL.createObjectURL(this.files[0]);
 req.open('GET',window.objURL,true);
 req.responseType='arraybuffer';
-req.onload=function(){window.URL.revokeObjectURL(window.objURL);document.querySelector('button').style.display="initial";window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
+req.onload=function(){window.URL.revokeObjectURL(window.objURL);document.querySelector('button').style.display="initial";window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}if(document.querySelectorAll("input[type=checkbox]")[1].checked){for(var i=0;i<document.querySelectorAll("input[name=preset]").length;i++){document.querySelectorAll("input[name=preset]").nextElementSibling.nextElementSibling.disabled=1;}}}
 req.send();
 }
 var source;
