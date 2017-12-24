@@ -76,7 +76,7 @@ document.querySelectorAll('button')[1].onclick=function(){
 if(window.choosingPreset){
 for(var i=0;i<document.querySelectorAll('input:not([name=preset])').length;i++){document.querySelectorAll('input:not([name=preset])')[i].removeAttribute('disabled');}
 for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.removeAttribute('readonly');}
-if(document.querySelectorAll(input[type=checkbox])[1].checked){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.disabled=1;}}
+if(document.querySelectorAll('input[type=checkbox]')[1].checked){for(var i=0;i<document.querySelectorAll('input[name=preset]').length;i++){document.querySelectorAll('input[name=preset]')[i].nextElementSibling.nextElementSibling.disabled=1;}}
 this.innerHTML="Save to Preset...";
 window.choosingPreset=0;
 return;
