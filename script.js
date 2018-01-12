@@ -7,7 +7,7 @@ req.send();
 }catch(e){alert(e);}
 window.onload=function(){
 if(window.location.hash==''){
-document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="#custom">Custom audio</a></li><li><a href="#oof">Oof</a></li><li><a href="#woah">Woah</a></li><li><a href="#yee">Yee</a></li><li><a href="#bork">Bork</a></li><li><a href="#toad">Toad</a></li></ul>';
+document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="#custom">Custom audio</a></li><li><a href="#dawae">Da wae</a></li><li><a href="#oof">Oof</a></li><li><a href="#woah">Woah</a></li><li><a href="#yee">Yee</a></li><li><a href="#bork">Bork</a></li><li><a href="#toad">Toad</a></li></ul>';
 }else{
 if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){document.body.innerHTML+='<div style="background-color:black;color:white;text-align:center;line-height:calc(200vh / 3);position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;" onclick="window.getData();this.outerHTML=\'\';">Tap the screen to enable audio...</div>';}
 window.choosingPreset=0;
