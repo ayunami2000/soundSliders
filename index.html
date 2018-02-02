@@ -22,7 +22,7 @@ input[type=range]{width:50vw;}
 <body>
 <a href="#">Sound Directory</a>
 <h1>soundSliders</h1>
-<button onclick="try{window.sources.forEach(function(s){s.stop(0);});}catch(ex){alert(ex)}">Stop Playback</button>
+<button onclick="try{window.sources.forEach(function(s){if(s){s.stop(0)}});}catch(ex){alert(ex)}">Stop Playback</button>
 <span style="display:none;">Don't mind me, I'm just a span...</span>
 <input style="display:none;background-color:black;" type="file"/>
 <br>
