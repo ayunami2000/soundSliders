@@ -5,13 +5,14 @@ req.responseType='arraybuffer';
 req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
 req.send();
 }catch(e){alert(e);}
+window.sources=[];
 window.onload=function(){
 if(window.location.hash==''){
 document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><a href="#custom">Custom audio</a></li><li><a href="#da wae">Da wae</a></li><li><a href="#oof">Oof</a></li><li><a href="#woah">Woah</a></li><li><a href="#yee">Yee</a></li><li><a href="#bork">Bork</a></li><li><a href="#toad">Toad</a></li></ul>';
 }else{
 if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){document.body.innerHTML+='<div style="background-color:black;color:white;text-align:center;line-height:calc(200vh / 3);position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;" onclick="window.getData();this.outerHTML=\'\';">Tap the screen to enable audio...</div>';}
 window.choosingPreset=0;
-if(window.location.hash.slice(1)=='custom'){document.querySelector('span').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/(?![\w\s])./g,'');}
+if(window.location.hash.slice(1)=='custom'){document.querySelector('input[type=file]').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/(?![\w\s])./g,'');}
 document.body.innerHTML+='<img src="sounds/'+window.location.hash.slice(1).replace(/(?![\w\s])./g,"")+'/the.png"/>';
 document.querySelector('img').ontouchstart=function(){!window.choosingPreset&&window.getData()};
 document.querySelector('img').onmousedown=function(){(!('ontouchstart' in window))&&(!window.choosingPreset&&window.getData())};
@@ -24,13 +25,14 @@ req=new XMLHttpRequest();
 window.objURL=window.URL.createObjectURL(this.files[0]);
 req.open('GET',window.objURL,true);
 req.responseType='arraybuffer';
-req.onload=function(){window.URL.revokeObjectURL(window.objURL);document.querySelector('button').style.display="initial";window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}if(document.querySelectorAll("input[type=checkbox]")[1].checked){for(var i=0;i<document.querySelectorAll("input[name=preset]").length;i++){document.querySelectorAll("input[name=preset]")[i].nextElementSibling.nextElementSibling.disabled=1;}}}
+req.onload=function(){window.URL.revokeObjectURL(window.objURL);window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}if(document.querySelectorAll("input[type=checkbox]")[1].checked){for(var i=0;i<document.querySelectorAll("input[name=preset]").length;i++){document.querySelectorAll("input[name=preset]")[i].nextElementSibling.nextElementSibling.disabled=1;}}}
 req.send();
 }
 var source;
 window.getData=function(){try{
 if(!window.audioCtx){window.audioCtx=new (window.AudioContext||window.webkitAudioContext)();}
 source=window.audioCtx.createBufferSource();
+window.sources.push(source);
 window.audioCtx.decodeAudioData(window.sound.slice(0),function(buffer){
 source.buffer=buffer;
 source.playbackRate.value=document.querySelector('input[type=range]').value/100;
