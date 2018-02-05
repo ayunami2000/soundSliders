@@ -1,6 +1,6 @@
 try{
 req=new XMLHttpRequest();
-req.open('GET',"sounds/"+window.location.hash.slice(1).replace(/(?![\w\s])./g,'')+"/the.mp3",true);//\W
+req.open('GET',"sounds/"+decodeURIComponent(window.location.hash.slice(1)).replace(/(?![\w\s])./g,'')+"/the.mp3",true);//\W
 req.responseType='arraybuffer';
 req.onload=function(){window.sound=req.response;for(var i=0;i<document.querySelectorAll('input').length;i++){document.querySelectorAll('input')[i].removeAttribute('disabled');}}
 req.send();
@@ -12,8 +12,8 @@ document.body.innerHTML='<h1>soundSliders</h1><h3>Choose a Slider:</h3><ul><li><
 }else{
 if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){document.body.innerHTML+='<div style="background-color:black;color:white;text-align:center;line-height:calc(200vh / 3);position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;" onclick="window.getData();this.outerHTML=\'\';">Tap the screen to enable audio...</div>';}
 window.choosingPreset=0;
-if(window.location.hash.slice(1)=='custom'){document.querySelector('input[type=file]').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+window.location.hash.slice(1).replace(/(?![\w\s])./g,'');}
-document.body.innerHTML+='<img src="sounds/'+window.location.hash.slice(1).replace(/(?![\w\s])./g,"")+'/the.png"/>';
+if(decodeURIComponent(window.location.hash.slice(1))=='custom'){document.querySelector('input[type=file]').style.display="initial";document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - Custom Audio";}else{document.querySelector('title').innerHTML=document.querySelector('h1').innerHTML+=" - "+decodeURIComponent(window.location.hash.slice(1)).replace(/(?![\w\s])./g,'');}
+document.body.innerHTML+='<img src="sounds/'+decodeURIComponent(window.location.hash.slice(1)).replace(/(?![\w\s])./g,"")+'/the.png"/>';
 document.querySelector('img').ontouchstart=function(){!window.choosingPreset&&window.getData()};
 document.querySelector('img').onmousedown=function(){(!('ontouchstart' in window))&&(!window.choosingPreset&&window.getData())};
 document.querySelector('img').onerror=function(){document.body.innerHTML="Error: Invalid sound.<br><a href='index.html'>Click to go to the directory...</a>";}
